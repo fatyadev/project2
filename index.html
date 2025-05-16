@@ -155,6 +155,30 @@
             color: white;
             transform: scale(1.05);
         }
+
+        @media (max-width: 600px) {
+
+            header,
+            footer {
+                padding: 1rem;
+            }
+
+            .map-grid {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 0 1rem;
+            }
+
+            .country-box {
+                font-size: 1rem;
+                padding: 0.8rem;
+            }
+
+            #infoCard {
+                right: 10px;
+                top: 20px;
+                max-width: 90%;
+            }
+        }
     </style>
 </head>
 
