@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        .wrapper {
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body.light {
+            background: #f0f0f0;
+            color: #111;
+        }
+
+        body.dark {
+            background: #111;
+            color: #111;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #4caf50;
+            color: white;
+            padding: 1rem 2rem;
+        }
+
+        #themeToggle {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: white;
+            color: #4caf50;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 2rem;
+            position: relative;
+        }
+
+        svg#map {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border: 2px solid #333;
+            background: white;
+        }
+
+        .country {
+            fill: #cccccc;
+            stroke: #333;
+            cursor: pointer;
+            transition: fill 0.2s, transform 0.2s;
+        }
+
+        .country:hover {
+            fill: #4caf50;
+            transform: scale(1.05);
+        }
+
+        #infoCard {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: white;
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            max-width: 300px;
+            z-index: 10;
+            transition: opacity 0.3s;
+        }
+
+        body.dark #infoCard {
+            background: #333;
+            color: white;
+        }
+
+        #infoCard.hidden {
+            display: none;
+        }
+
+        #infoCard img {
+            width: 100%;
+            border-radius: 8px;
+            margin: 0.5rem 0;
+        }
+
+        #closeCard {
+            background: #f44336;
+            color: white;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #333;
+            color: white;
+            bottom: 0px;
+
+        }
+
+        .map-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .country-box {
+            background: #ddd;
+            padding: 1rem;
+            border: 2px solid #333;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .country-box:hover {
+            background: #4caf50;
+            color: white;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body class="light">
+    <div class="wrapper">
+        <header>
+            <h1>Travel Map</h1>
+            <button id="themeToggle">Mode</button>
+        </header>
+
+        <main>
+            <div id="map" class="map-grid">
+                <div id="russia" class="country-box">Russia</div>
+                <div id="france" class="country-box">France</div>
+                <div id="japan" class="country-box">Japan</div>
+                <div id="brazil" class="country-box">Brazil</div>
+                <div id="egypt" class="country-box">Egypt</div>
+                <div id="germany" class="country-box">Germany</div>
+                <div id="azerbaijan" class="country-box">Azerbaijan</div>
+                <div id="turkiye" class="country-box">Türkiye</div>
+                <div id="kazakhstan" class="country-box">Kazakhstan</div>
+                <div id="usa" class="country-box">USA</div>
+                <div id="italy" class="country-box">Italy</div>
+                <div id="georgia" class="country-box">Georgia</div>
+                <div id="iceland" class="country-box">Iceland</div>
+                <div id="greece" class="country-box">Greece</div>
+                <div id="maldives" class="country-box">Maldives</div>
+                <div id="norway" class="country-box">Norway</div>
+                <div id="uae" class="country-box">UAE</div>
+                <div id="mexico" class="country-box">Mexico</div>
+                <div id="argentina" class="country-box">Argentina</div>
+                <div id="portugal" class="country-box">Portugal</div>
+                <div id="canada" class="country-box">Canada</div>
+                <div id="australia" class="country-box">Australia</div>
+                <div id="croatia" class="country-box">Croatia</div>
+                <div id="china" class="country-box">China</div>
+            </div>
+
+
+            <div id="infoCard" class="hidden">
+                <h2 id="countryName"></h2>
+                <img id="countryImg" src="">
+                <p id="countryFact"></p><br>
+                <button id="closeCard">Close</button>
+            </div>
+        </main>
+
+        <footer>
+            <p>Design by Fatima &copy; 2025</p>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
